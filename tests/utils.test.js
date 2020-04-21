@@ -95,7 +95,18 @@ it("Should add a new item to the shopping cart", function () {
   utils.clearShoppingCart()
 })
 
-it("Should return the number of items in the cart")
+it("Should return the number of items in the cart", function () {
+  utils.addItemToShoppingCart('apple',0.99)
+  utils.addItemToShoppingCart('peach',2.00,3)
+  utils.addItemToShoppingCart('orange',1.50,8)
+
+  const sumOfItems = utils.totalQuantityOfCartItems()
+
+  expect(sumOfItems).to.be.a('number')
+  expect(sumOfItems).to.be.equal(14)
+
+  utils.clearShoppingCart()
+})
 
 it("Should remove items from cart")
 

@@ -60,7 +60,7 @@ const addItemToShoppingCart = item => {
     }
   }
   shoppingCart.push(createItem(item))
-  return shoppingCart
+  return shoppingCart[shoppingCart.length-1]
 }
 
 const displayShoppingCart = () => {
@@ -118,6 +118,18 @@ const totalCostOfCart = () => {
   }
 }
 
+const totalQuantityOfCartItems = () => {
+  if (shoppingCart.length == 0) {
+    return 'empty shopping cart please add items to shopping cart'
+  } else {
+    let amount = 0
+    for (let i = 0; i < shoppingCart.length; i += 1) {
+      amount += shoppingCart[i].quantity
+    }
+    return amount
+  }
+}
+
 const clearShoppingCart = () => {
   if (shoppingCart.length == 0) {
     return 'empty shopping cart please add items to shopping cart'
@@ -128,5 +140,5 @@ const clearShoppingCart = () => {
 }
 
 module.exports = { 
-  sayHello, area, perimeter, circleArea, createItem, addItemToShoppingCart, shoppingCart, storeInventory, displayShoppingCart, displayStoreInventory, numberOfItemsInCart, remoteItemFromCart, totalCostOfCart, clearShoppingCart
+  sayHello, area, perimeter, circleArea, createItem, addItemToShoppingCart, shoppingCart, storeInventory, displayShoppingCart, displayStoreInventory, numberOfItemsInCart, remoteItemFromCart, totalCostOfCart, clearShoppingCart,totalQuantityOfCartItems
 }
