@@ -79,6 +79,8 @@ it("Should return an array containing all items in cart", function(){
 
   expect(utils.shoppingCart.length).to.be.equal(3)
 
+  utils.displayShoppingCart()
+
   utils.clearShoppingCart()
 })
 
@@ -91,7 +93,6 @@ it("Should add a new item to the shopping cart", function () {
   utils.shoppingCart.should.include.something.that.deep.equals(cartItem2)
   utils.shoppingCart.should.include.something.that.deep.equals(cartItem3)
 
-
   utils.clearShoppingCart()
 })
 
@@ -103,12 +104,18 @@ it("Should return the number of items in the cart", function () {
   const sumOfItems = utils.totalQuantityOfCartItems()
 
   expect(sumOfItems).to.be.a('number')
-  expect(sumOfItems).to.be.equal(14)
+  expect(sumOfItems).to.be.equal(12)
 
   utils.clearShoppingCart()
 })
 
-it("Should remove items from cart")
+it("Should remove items from cart", function () {
+  utils.addItemToShoppingCart('apple',0.99)
+  utils.addItemToShoppingCart('peach',2.00,3)
+  utils.addItemToShoppingCart('orange',1.50,8)
+
+  
+})
 
 // ========================================================
 // Stretch Challenges

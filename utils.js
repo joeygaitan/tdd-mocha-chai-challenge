@@ -42,24 +42,27 @@ const createItem = (name,price, quantity=1) => {
 
   storeInventory.push({name, price, quantity})
 
-  console.log(storeInventory)
+  // console.log(storeInventory)
 
   return {name, price, quantity}
 }
 
 
 
-const addItemToShoppingCart = item => {
+const addItemToShoppingCart = (name,price,quantity=1) => {
   //should add it to shopping cart
   
   for (let i = 0;i < shoppingCart.length; i += 1) {
-    if (shoppingCart[i].name == item.name) {
-      shoppingCart[i].price = item.price
-      shoppingCart[i].quantity += item.quantity
+    if (shoppingCart[i].name == name) {
+      shoppingCart[i].price = price
+      if (quantity != 1){
+        shoppingCart[i].quantity += quantity
+      }
       return shoppingCart[i]
     }
   }
-  shoppingCart.push(createItem(item))
+  shoppingCart.push(createItem(name,price,quantity))
+  console.log(shoppingCart)
   return shoppingCart[shoppingCart.length-1]
 }
 
