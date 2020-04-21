@@ -114,7 +114,15 @@ it("Should remove items from cart", function () {
   utils.addItemToShoppingCart('peach',2.00,3)
   utils.addItemToShoppingCart('orange',1.50,8)
 
-  
+  let trueItem = utils.removeItemFromCart('apple')
+  let falseIem = utils.removeItemFromCart('pizza')
+
+  expect(trueItem).to.be.equal("success")
+  expect(falseIem).to.be.equal("item not found")
+
+  utils.removeItemFromCart()
+
+  utils.clearShoppingCart()
 })
 
 // ========================================================
@@ -123,6 +131,20 @@ it("Should remove items from cart", function () {
 
 it("Should update the count of items in the cart")
 
-it("Should validate that an empty cart has 0 items")
+it("Should validate that an empty cart has 0 items", function () {
+ let items = utils.displayShoppingCart()
+ 
+ expect(items).to.be.equal('empty shopping cart please add items to shopping cart')
+})
 
-it("Should return the total cost of all items in the cart")
+it("Should return the total cost of all items in the cart", function() {
+  utils.addItemToShoppingCart('apple',0.99)
+  utils.addItemToShoppingCart('peach',2.00,3)
+  utils.addItemToShoppingCart('orange',1.50,8)
+
+  let costOfCart = utils.totalCostOfCart()
+
+  expect(costOfCart).to.be.equal(18.99)
+
+  utils.clearShoppingCart()
+})

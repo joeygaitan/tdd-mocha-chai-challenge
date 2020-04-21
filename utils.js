@@ -94,16 +94,17 @@ const numberOfItemsInCart = () => {
   }
 }
 
-const remoteItemFromCart = item => {
+const removeItemFromCart = name => {
   if (shoppingCart.length == 0) {
     return 'empty shopping cart please add items to shopping cart'
   } else {
     for (let i = 0; i < shoppingCart.length; i += 1) {
-      if (shoppingCart.name == item.name) {
+      if (shoppingCart[i].name == name) {
         shoppingCart.splice(i, 1)
+        return "success"
       }
     }
-    return shoppingCart
+    return "item not found"
   }
 }
 
@@ -117,7 +118,7 @@ const totalCostOfCart = () => {
       amount
     }
     amount = amount.toFixed(2)
-    return amount
+    return Number(amount)
   }
 }
 
@@ -143,5 +144,5 @@ const clearShoppingCart = () => {
 }
 
 module.exports = { 
-  sayHello, area, perimeter, circleArea, createItem, addItemToShoppingCart, shoppingCart, storeInventory, displayShoppingCart, displayStoreInventory, numberOfItemsInCart, remoteItemFromCart, totalCostOfCart, clearShoppingCart,totalQuantityOfCartItems
+  sayHello, area, perimeter, circleArea, createItem, addItemToShoppingCart, shoppingCart, storeInventory, displayShoppingCart, displayStoreInventory, numberOfItemsInCart, removeItemFromCart, totalCostOfCart, clearShoppingCart,totalQuantityOfCartItems
 }
